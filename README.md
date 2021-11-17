@@ -13,7 +13,7 @@ Key Features
 5. Add an app shortcut to the home screen.
 6. View a chart showing the number of upcoming events by city.
 
-Task 4.1 
+App features/scenarios:
 
 *Feature 2: Show/hide an event's details*
 -As a user, I should be able to show or hide an event's details so that I can choose how much information is visible.
