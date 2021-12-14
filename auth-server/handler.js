@@ -86,7 +86,9 @@ module.exports.getCalendarEvents = async (event) => {
     redirect_uris[0]
   );
 
-  const access_token = event.pathParameters ? decodeURIComponent(`${event.pathParameters.access_token}`) : ''
+  const access_token = event.pathParameters
+    ? decodeURIComponent(`${event.pathParameters.access_token}`)
+    : ''
 
   oAuth2Client.setCredentials({ access_token });
 
@@ -107,12 +109,6 @@ module.exports.getCalendarEvents = async (event) => {
         }
       }
     );
-    oAuth2Client.getCalendarEvents(access_token, (err, results) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(results);
-    });
   })
     .then((results) => {
       // Respond with OAuth token
