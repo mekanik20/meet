@@ -13,7 +13,7 @@ const credentials = {
   redirect_uris: ["https://mekanik20.github.io/meet/"],
   javascript_origins: ["https://mekanik20.github.io", "http://localhost:3000"],
 };
-const { client_secret, client_id, redirect_uris, calendar_id } = credentials;
+const { client_secret, client_id, redirect_uris, calendar_id, } = credentials;
 const oAuth2Client = new google.auth.OAuth2(
   client_id,
   client_secret,
