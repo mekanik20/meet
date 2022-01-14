@@ -17,28 +17,13 @@ describe('<Event /> component', () => {
     expect(EventWrapper.find('.summary')).toHaveLength(1);
   });
 
-  test('Show details button is rendered', () => {
-    expect(EventWrapper.find('.show-details')).toHaveLength(1);
+  test('Start date and time are displayed', () => {
+    expect(EventWrapper.find('.start-date')).toHaveLength(1);
   });
 
-  test('By default, event elements are collapsed', () => {
-    expect(EventWrapper.state('collapsed')).toBe(true);
+  test('More details are shown when user clicks details button', () => {
+    EventWrapper.find('.event-details').simulate('click');
+    expect(EventWrapper.find('.event-description')).toHaveLength(1);
+    expect(EventWrapper.find('.event-details').text()).toBe('Hide');
   });
-
-  test('Clicking show details renders more details', () => {
-    EventWrapper.setState({
-      collapsed: true,
-    });
-    EventWrapper.find('.show-details').simulate('click');
-    expect(EventWrapper.state('collapsed')).toBe(false);
-  });
-
-  test('Clicking hide details hides event details', () => {
-    EventWrapper.setState({
-      collapsed: false,
-    });
-    EventWrapper.find('.hide-details').simulate('click');
-    expect(EventWrapper.state('collapsed')).toBe(true);
-  });
-
 })
