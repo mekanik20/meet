@@ -5,12 +5,13 @@ import NumberOfEvents from '../NumberOfEvents';
 describe('<NumberOfEvents /> component', () => {
   let NumberOfEventsWrapper;
   beforeAll(() => {
-    NumberOfEventsWrapper = shallow(<NumberOfEvents />)
+    NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
 
-  test('text input', () => {
-    expect(NumberOfEventsWrapper.find('.NumberOfEvents')).toHaveLength(1);
+  test('Number of events is changed in input', () => {
+    const eventsInput = { target: { value: 16 } };
+    NumberOfEventsWrapper.find('.number-input').simulate('change', eventsInput);
+    expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(16);
   });
-
 
 })
