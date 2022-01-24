@@ -13,8 +13,7 @@ class CitySearch extends Component {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
     this.setState({
-      query: value,
-      suggestions,
+      query: value, suggestions
     });
   }
 
