@@ -19,7 +19,10 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
+        this.setState({
+          events: events.slice(0, this.state.numberOfEvents),
+          locations: extractLocations(events)
+        });
       }
     });
   }
@@ -33,7 +36,7 @@ class App extends Component {
       <div className="App">
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <EventList events={this.state.events} />
-        <NumberOfEvents />
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} />
       </div>
     );
   }
@@ -45,7 +48,8 @@ class App extends Component {
         events.filter((event) => event.location === location);
       if (this.mounted) {
         this.setState({
-          events: locationEvents
+          events: locationEvents.slice(0, this.state.numberOfEvents),
+          currentLocation: location,
         });
       }
     });
