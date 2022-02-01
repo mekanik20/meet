@@ -1,5 +1,3 @@
-permalink: /index.html
-
 # meet app
 
 Objective
