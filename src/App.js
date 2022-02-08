@@ -31,17 +31,7 @@ class App extends Component {
     this.mounted = false;
   }
 
-  render() {
-    return (
-      <div className="App">
-        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
-        <EventList events={this.state.events} />
-        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} />
-      </div>
-    );
-  }
-
-  updateEvents = (location) => {
+  updateEvents = (location, eventCount) => {
     getEvents().then((events) => {
       const locationEvents = (location === 'all') ?
         events :
@@ -53,6 +43,16 @@ class App extends Component {
         });
       }
     });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
+        <EventList events={this.state.events} />
+        <NumberOfEvents numberOfEvents={this.state.numberOfEvents} />
+      </div>
+    );
   }
 }
 
