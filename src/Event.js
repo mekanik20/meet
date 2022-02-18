@@ -19,7 +19,7 @@ class Event extends Component {
         </h2>
         <p className='start-date'>{new Date(event.start.dateTime).toString()}
         </p>
-        <button className='event-details' onClick={handleClick}>
+        <button className='event-details event__details-btn' onClick={handleClick}>
           {showDetails ? 'Hide' : 'Show Details'}
         </button>
         {showDetails && (
