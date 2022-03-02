@@ -33,14 +33,23 @@ class App extends Component {
         }
       });
     }
-    getEvents().then((events) => {
+    if (!navigator.onLine) {
+      this.setState({
+        OfflineAlertText: 'You are not connected to the Internet'
+      });
+    } else {
+      this.setState({
+        OfflineAlertText: ''
+      });
+    }
+    /*getEvents().then((events) => {
       if (this.mounted) {
         this.setState({
           events: events.slice(0, this.state.numberOfEvents),
           locations: extractLocations(events),
         });
       }
-    });
+    });*/
   }
 
   componentWillUnmount() {
