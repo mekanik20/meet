@@ -19,11 +19,10 @@ class App extends Component {
     showWelcomeScreen: undefined
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem('access_token');
-    const isTokenValid = (await checkToken(accessToken)).error ? false :
-      true;
+    const isTokenValid = checkToken(accessToken).error ? false : true;
     const searchParams = new URLSearchParams(window.location.search);
     const code = searchParams.get("code");
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
@@ -36,11 +35,11 @@ class App extends Component {
     }
     if (!navigator.onLine) {
       this.setState({
-        offLineText: 'You are not connected to the Internet'
+        offLineText: 'You are not connected to the Internet',
       });
     } else {
       this.setState({
-        offLineText: ''
+        offLineText: ""
       });
     }
     /*getEvents().then((events) => {
