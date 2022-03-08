@@ -7,7 +7,7 @@ import NumberOfEvents from './NumberOfEvents';
 import WelcomeScreen from './WelcomeScreen';
 import { extractLocations, getEvents, checkToken, getAccessToken } from './api';
 import { InfoAlert } from './Alert';
-import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
+import { ScatterChart, Scatter, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 
 
 
@@ -100,16 +100,20 @@ class App extends Component {
       className="App" />
     return (
       <div className="App">
+        <h1>Meet App</h1>
+        <h4>Choose your city</h4>
         <CitySearch locations={this.state.locations} updateEvents={this.updateEvents} />
         <NumberOfEvents numberOfEvents={this.state.numberOfEvents} updateEvents={this.updateEvents} />
-        <ScatterChart width={730} height={250}
-          margin={{ top: 20, right: 20, bottom: 10, left: 10 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis type="category" dataKey="city" name="city" />
-          <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
-          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-          <Scatter data={this.getData()} fill="#8884d8" />
-        </ScatterChart>
+        <h4>Events in each city</h4>
+        <ResponsiveContainer height={400} >
+          <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
+            <CartesianGrid />
+            <XAxis type="category" dataKey="city" name="city" />
+            <YAxis type="number" dataKey="number" name="number of events" allowDecimals={false} />
+            <Tooltip cursor={{ strokeDasharray: '3 3' }} />
+            <Scatter data={this.getData()} fill="#8884d8" />
+          </ScatterChart>
+        </ResponsiveContainer>
         <EventList events={this.state.events} />
         <InfoAlert text={this.state.offLineText} />
         <WelcomeScreen showWelcomeScreen={this.state.showWelcomeScreen}
