@@ -4,6 +4,7 @@ Objective
 To build a serverless, progressive web application (PWA) with React using a test-driven
 development (TDD) technique. The application uses the Google Calendar API to fetch
 upcoming events.
+---
 
 Key Features
 1. Filter events by city.
@@ -12,6 +13,7 @@ Key Features
 4. Use the app when offline.
 5. Add an app shortcut to the home screen.
 6. View a chart showing the number of upcoming events by city.
+---
 
 App features/scenarios:
 
